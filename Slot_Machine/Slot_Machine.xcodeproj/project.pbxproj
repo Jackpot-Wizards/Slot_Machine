@@ -12,6 +12,9 @@
 		F40FAB6823CACCD1005C7565 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F40FAB6623CACCD1005C7565 /* Main.storyboard */; };
 		F40FAB6A23CACCD2005C7565 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F40FAB6923CACCD2005C7565 /* Assets.xcassets */; };
 		F40FAB6D23CACCD2005C7565 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F40FAB6B23CACCD2005C7565 /* LaunchScreen.storyboard */; };
+		F40FAB7523CACE3C005C7565 /* SlotMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40FAB7423CACE3C005C7565 /* SlotMachine.swift */; };
+		F40FAB7723CACE51005C7565 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40FAB7623CACE51005C7565 /* Player.swift */; };
+		F40FAB7923CAE360005C7565 /* Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40FAB7823CAE360005C7565 /* Exception.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		F40FAB6923CACCD2005C7565 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F40FAB6C23CACCD2005C7565 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F40FAB6E23CACCD2005C7565 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F40FAB7423CACE3C005C7565 /* SlotMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotMachine.swift; sourceTree = "<group>"; };
+		F40FAB7623CACE51005C7565 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		F40FAB7823CAE360005C7565 /* Exception.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exception.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,9 @@
 				F40FAB6923CACCD2005C7565 /* Assets.xcassets */,
 				F40FAB6B23CACCD2005C7565 /* LaunchScreen.storyboard */,
 				F40FAB6E23CACCD2005C7565 /* Info.plist */,
+				F40FAB7423CACE3C005C7565 /* SlotMachine.swift */,
+				F40FAB7623CACE51005C7565 /* Player.swift */,
+				F40FAB7823CAE360005C7565 /* Exception.swift */,
 			);
 			path = Slot_Machine;
 			sourceTree = "<group>";
@@ -135,8 +144,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F40FAB7723CACE51005C7565 /* Player.swift in Sources */,
+				F40FAB7923CAE360005C7565 /* Exception.swift in Sources */,
 				F40FAB6523CACCD1005C7565 /* ViewController.swift in Sources */,
 				F40FAB6323CACCD1005C7565 /* AppDelegate.swift in Sources */,
+				F40FAB7523CACE3C005C7565 /* SlotMachine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
