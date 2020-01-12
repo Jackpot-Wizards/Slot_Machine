@@ -26,16 +26,17 @@ class SlotMachine
     
     private func ResetRound() -> Void
     {
-        grapes = 0;
-        bananas = 0;
-        oranges = 0;
-        cherries = 0;
-        bars = 0;
-        bells = 0;
-        sevens = 0;
-        blanks = 0;
+        grapes = 0
+        bananas = 0
+        oranges = 0
+        cherries = 0
+        bars = 0
+        bells = 0
+        sevens = 0
+        blanks = 0
         
         betLine = [" ", " ", " "]
+        playerBet = 0
     }
     
     private func CheckRange(_ value: Int, _ lowerBounds: Int, _ upperBounds: Int) -> Int
@@ -48,54 +49,73 @@ class SlotMachine
         return 0
     }
     
-    private func DetermineWinnings() -> Void
+    private func checkJackPot() -> Void {
+        /* compare two random values */
+        var jackPotTry = (Int)(floor(Double.random(in: 0.0..<1.0) * 51 + 1))
+        var jackPotWin = (Int)(floor(Double.random(in: 0.0..<1.0) * 51 + 1))
+        if (jackPotTry == jackPotWin) {
+            player.bank += 1000
+        }
+    }
+    
+    private func DetermineWinnings() -> Int
     {
         var winnings = 0
         if (blanks == 0) {
             if (grapes == 3) {
-                winnings = playerBet * 10;
+                winnings = playerBet * 10
             } else if (bananas == 3) {
-                winnings = playerBet * 20;
+                winnings = playerBet * 20
             } else if (oranges == 3) {
-                winnings = playerBet * 30;
+                winnings = playerBet * 30
             } else if (cherries == 3) {
-                winnings = playerBet * 40;
+                winnings = playerBet * 40
             } else if (bars == 3) {
-                winnings = playerBet * 50;
+                winnings = playerBet * 50
             } else if (bells == 3) {
-                winnings = playerBet * 75;
+                winnings = playerBet * 75
             } else if (sevens == 3) {
-                winnings = playerBet * 100;
+                winnings = playerBet * 100
             } else if (grapes == 2) {
-                winnings = playerBet * 2;
+                winnings = playerBet * 2
             } else if (bananas == 2) {
-                winnings = playerBet * 2;
+                winnings = playerBet * 2
             } else if (oranges == 2) {
-                winnings = playerBet * 3;
+                winnings = playerBet * 3
             } else if (cherries == 2) {
-                winnings = playerBet * 4;
+                winnings = playerBet * 4
             } else if (bars == 2) {
-                winnings = playerBet * 5;
+                winnings = playerBet * 5
             } else if (bells == 2) {
-                winnings = playerBet * 10;
+                winnings = playerBet * 10
             } else if (sevens == 2) {
-                winnings = playerBet * 20;
+                winnings = playerBet * 20
             } else if (sevens == 1) {
-                winnings = playerBet * 5;
+                winnings = playerBet * 5
             } else {
-                winnings = playerBet * 1;
+                winnings = playerBet * 1
             }
 
             player.bank += winnings
+            
+            PlayerStatistics.MoneyWon += winnings
+            PlayerStatistics.RoundsPlayed += 1
+            PlayerStatistics.RoundsWon += 1
         }
         else {
             player.bank -= playerBet
+            
+            PlayerStatistics.MoneyLost += playerBet
+            PlayerStatistics.RoundsPlayed += 1
+            PlayerStatistics.RoundsLost += 1
         }
         
         ResetRound()
+        
+        return winnings
     }
 
-    public func PlayRound(player: Player) throws -> Void
+    public func PlayRound(player: Player) throws -> Int
     {
         if (player.bet < 0)
         {
@@ -143,5 +163,7 @@ class SlotMachine
                 print("Value is out of range")
             }
         }
+        
+        return DetermineWinnings()
     }
 }
