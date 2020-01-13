@@ -9,7 +9,51 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var player = Player()
+    
 
+    @IBOutlet weak var Bank: UILabel!
+    @IBOutlet weak var Bet: UILabel!
+    @IBOutlet weak var JackPot: UILabel!
+    @IBOutlet weak var Bet1: UIButton!
+    @IBOutlet weak var BetMax: UIButton!
+    @IBOutlet weak var Spin: UIButton!
+
+    var stopSignal : [Bool] = [false, false, false]
+    
+    @IBAction func Spin(_ sender: UIButton, forEvent event: UIEvent) {
+        stopSignal = [false, false, false]
+        Animate();
+    }
+    
+    
+    @IBAction func BetOne(_ sender: UIButton, forEvent event: UIEvent) {
+        
+        if Int(Bet.text!)! < 3
+        {
+            Bet.text = String(Int(Bet.text!)! + 1)
+        }
+    }
+    
+    @IBAction func BetMax(_ sender: UIButton, forEvent event: UIEvent) {
+        Bet.text = "3"
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @IBOutlet weak var textWithTimer: UILabel!
     
     @IBOutlet weak var imgViewSlotItem1: UIImageView!
@@ -28,15 +72,11 @@ class ViewController: UIViewController {
     var reelHeight : CGFloat = 1000 // Height of the reel
     var reelStartPos : CGFloat = 0  // Start y position of the reel
     var reelStopPos : CGFloat = 0   // Stop y position of the reel
-    
-    
-    var stopSignal : [Bool] = [false, false, false]
+
     var posItems : [CGFloat] = [0,0,0,0,0,0,0]
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    func Animate() -> Void
+    {
         // Initialize parameters for slot reel
         reelWidth = imgViewSlotItem1.frame.width
         reelHeight = reelWidth * 10
@@ -160,6 +200,15 @@ class ViewController: UIViewController {
         })
     }
 
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        Bank.text = String(player.bank)
+        Bet.text = "0"
+        JackPot.text = "0"
+    }
 
 }
 
