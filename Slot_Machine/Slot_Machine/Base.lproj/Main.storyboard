@@ -47,53 +47,57 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Slot-Machine" translatesAutoresizingMaskIntoConstraints="NO" id="V3j-1I-5sj">
-                                <rect key="frame" x="-2" y="31" width="377" height="810"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="V3j-1I-5sj">
+                                <rect key="frame" x="-2" y="-10" width="377" height="828"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bja-D1-cjK" customClass="CustomButton" customModule="Slot_Machine" customModuleProvider="target">
-                                <rect key="frame" x="132" y="648" width="111" height="56"/>
+                                <rect key="frame" x="132" y="653" width="111" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="BetMax"/>
-                                <state key="disabled" image="Spin"/>
+                                <state key="disabled" image="BetMaxDisabled"/>
+                                <state key="highlighted" image="BetMaxPushed"/>
                                 <connections>
                                     <action selector="BetMax:forEvent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RaC-vZ-fOU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0K2-wZ-WGs" customClass="CustomButton" customModule="Slot_Machine" customModuleProvider="target">
-                                <rect key="frame" x="254" y="647" width="111" height="56"/>
+                                <rect key="frame" x="254" y="652" width="111" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Spin"/>
+                                <state key="disabled" image="SpinDisabled"/>
+                                <state key="highlighted" image="SpinPushed"/>
                                 <connections>
                                     <action selector="Spin:forEvent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yAT-lf-6hO"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NpY-pp-aUW">
-                                <rect key="frame" x="12" y="536" width="109" height="38"/>
+                                <rect key="frame" x="7" y="545" width="109" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="25"/>
+                                <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="123" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBC-Us-ZLk">
-                                <rect key="frame" x="251" y="536" width="112" height="38"/>
+                                <rect key="frame" x="246" y="545" width="112" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="25"/>
+                                <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aY6-aX-pnt">
-                                <rect key="frame" x="166" y="536" width="34" height="37"/>
+                                <rect key="frame" x="161" y="545" width="34" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="25"/>
+                                <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hd-ZR-WDq" customClass="CustomButton" customModule="Slot_Machine" customModuleProvider="target">
-                                <rect key="frame" x="10" y="648" width="111" height="56"/>
+                                <rect key="frame" x="10" y="653" width="111" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="BetOne"/>
-                                <state key="disabled" image="Spin"/>
+                                <state key="disabled" image="BetOneDisabled"/>
+                                <state key="highlighted" image="BetOnePushed"/>
                                 <connections>
                                     <action selector="BetOne:forEvent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nv8-WI-3Gf"/>
                                 </connections>
@@ -121,10 +125,16 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Background" width="1125" height="2679"/>
         <image name="BetMax" width="344" height="175"/>
+        <image name="BetMaxDisabled" width="344" height="175"/>
+        <image name="BetMaxPushed" width="344" height="175"/>
         <image name="BetOne" width="344" height="175"/>
-        <image name="Slot-Machine" width="1125" height="2436"/>
+        <image name="BetOneDisabled" width="344" height="175"/>
+        <image name="BetOnePushed" width="344" height="175"/>
         <image name="Spin" width="344" height="175"/>
+        <image name="SpinDisabled" width="344" height="175"/>
+        <image name="SpinPushed" width="344" height="175"/>
         <image name="slot_list_img" width="167" height="1670"/>
     </resources>
 </document>
