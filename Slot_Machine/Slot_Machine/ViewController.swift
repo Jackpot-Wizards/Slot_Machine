@@ -11,47 +11,102 @@ import UIKit
 class ViewController: UIViewController {
     
     var player = Player()
+    var slotMachine = SlotMachine()
     
-
+    var reelAnimationIsOver = 0
+    var newRoundPlayed = false
+    var betWasPressed = false
+    
     @IBOutlet weak var Bank: UILabel!
     @IBOutlet weak var Bet: UILabel!
     @IBOutlet weak var JackPot: UILabel!
     @IBOutlet weak var Bet1: UIButton!
     @IBOutlet weak var BetMax: UIButton!
     @IBOutlet weak var Spin: UIButton!
-
+    
     var stopSignal : [Bool] = [false, false, false]
     
-    @IBAction func Spin(_ sender: UIButton, forEvent event: UIEvent) {
-        stopSignal = [false, false, false]
-        Animate();
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.roundIsOver(_:)), name: NSNotification.Name(rawValue: "roundIsOver"), object: nil)
+        
+        Bank.text = String(player.bank)
+        Bet.text = "0"
+        JackPot.text = "0"
     }
     
-    
-    @IBAction func BetOne(_ sender: UIButton, forEvent event: UIEvent) {
-        
-        if Int(Bet.text!)! < 3
+    @objc func roundIsOver(_ notification: NSNotification) {
+        reelAnimationIsOver += 1
+        if (reelAnimationIsOver == 3)
         {
-            Bet.text = String(Int(Bet.text!)! + 1)
+            reelAnimationIsOver = 0;
+            Bet1.isEnabled = true;
+            BetMax.isEnabled = true;
+            Spin.isEnabled = true;
+            
+            newRoundPlayed = true;
+            betWasPressed = false;
         }
     }
     
-    @IBAction func BetMax(_ sender: UIButton, forEvent event: UIEvent) {
-        Bet.text = "3"
+    @IBAction func Spin(_ sender: UIButton, forEvent event: UIEvent) {
+        // if no bet buttons were pressed
+        if (!betWasPressed)
+        {
+            Bank.text = String(Int(Bank.text!)! - Int(Bet.text!)!)
+        }
     }
     
+    @IBAction func BetOne(_ sender: UIButton, forEvent event: UIEvent) {
+        betWasPressed = true;
+        
+        if (newRoundPlayed)
+        {
+            Bet.text = "1"
+            Bank.text = String(Int(Bank.text!)! - 1)
+        } else if Int(Bet.text!)! < 3
+        {
+            Bet.text = String(Int(Bet.text!)! + 1)
+            Bank.text = String(Int(Bank.text!)! - 1)
+        }
+        
+        newRoundPlayed = false;
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    @IBAction func BetMax(_ sender: UIButton, forEvent event: UIEvent) {
+        
+        if (!betWasPressed)
+        {
+            Bank.text = String(Int(Bank.text!)! - 3)
+        }
+        else
+        {
+            Bank.text = String(Int(Bank.text!)! + Int(Bet.text!)! - 3)
+        }
+        
+        Bet.text = "3"
+        betWasPressed = true;
+        Bet1.isEnabled = false;
+        BetMax.isEnabled = false;
+        Spin.isEnabled = false;
+        stopSignal = [false, false, false]
+        
+        player.bank = Int(Bank.text!)!
+        player.bet = Int(Bet.text!)!
+        
+        do {
+            let (betLine, winnings) = try slotMachine.PlayRound(player)
+            
+            Bet1.isEnabled = false;
+            BetMax.isEnabled = false;
+            Spin.isEnabled = false;
+            stopSignal = [false, false, false]
+            Animate();
+        } catch {
+            print("Error!")
+        }
+    }
     
     
     @IBOutlet weak var textWithTimer: UILabel!
@@ -72,7 +127,7 @@ class ViewController: UIViewController {
     var reelHeight : CGFloat = 1000 // Height of the reel
     var reelStartPos : CGFloat = 0  // Start y position of the reel
     var reelStopPos : CGFloat = 0   // Stop y position of the reel
-
+    
     var posItems : [CGFloat] = [0,0,0,0,0,0,0]
     
     func Animate() -> Void
@@ -82,7 +137,6 @@ class ViewController: UIViewController {
         reelHeight = reelWidth * 10
         reelStartPos = posStop - reelHeight + reelWidth * 2 // remon bottom
         reelStopPos = reelStartPos + reelWidth * 7 // remon top
-        
         
         let posCherry : CGFloat = reelStopPos - reelWidth * 6
         let posDiamond : CGFloat = reelStopPos - reelWidth * 5
@@ -142,9 +196,6 @@ class ViewController: UIViewController {
         runSpin(imgViewSlotItem3, spinSpeed, posRemon, 2)
         
         textWithTimer.text = "first"
-        
-        
-        
     }
     
     func runSpin(_ imageView: UIImageView,_ speed:CGFloat, _ posStop:CGFloat, _ idxReel:Int) {
@@ -177,6 +228,7 @@ class ViewController: UIViewController {
             if (imageView.frame.origin.y == posStop) {
                 if ((true == self.stopSignal[idxReel])) {
                     imageView.layer.removeAllAnimations()
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "roundIsOver"), object: nil)
                 } else {
                     if(imageView.frame.origin.y == self.reelStopPos) {
                         // Start again
@@ -195,20 +247,8 @@ class ViewController: UIViewController {
                     self.spinReel(imageView, speeds, posStop, idxReel)
                 }
             }
-            
-            
         })
     }
-
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        Bank.text = String(player.bank)
-        Bet.text = "0"
-        JackPot.text = "0"
-    }
-
 }
 

@@ -16,6 +16,7 @@
 		F40FAB7723CACE51005C7565 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40FAB7623CACE51005C7565 /* Player.swift */; };
 		F40FAB7923CAE360005C7565 /* Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40FAB7823CAE360005C7565 /* Exception.swift */; };
 		F40FAB7B23CAE6E6005C7565 /* PlayerStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40FAB7A23CAE6E6005C7565 /* PlayerStatistics.swift */; };
+		F41049D423CD470C00200A68 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41049D323CD470C00200A68 /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		F40FAB7623CACE51005C7565 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		F40FAB7823CAE360005C7565 /* Exception.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exception.swift; sourceTree = "<group>"; };
 		F40FAB7A23CAE6E6005C7565 /* PlayerStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStatistics.swift; sourceTree = "<group>"; };
+		F41049D323CD470C00200A68 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				F40FAB7623CACE51005C7565 /* Player.swift */,
 				F40FAB7823CAE360005C7565 /* Exception.swift */,
 				F40FAB7A23CAE6E6005C7565 /* PlayerStatistics.swift */,
+				F41049D323CD470C00200A68 /* CustomButton.swift */,
 			);
 			path = Slot_Machine;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 			files = (
 				F40FAB7723CACE51005C7565 /* Player.swift in Sources */,
 				F40FAB7923CAE360005C7565 /* Exception.swift in Sources */,
+				F41049D423CD470C00200A68 /* CustomButton.swift in Sources */,
 				F40FAB6523CACCD1005C7565 /* ViewController.swift in Sources */,
 				F40FAB7B23CAE6E6005C7565 /* PlayerStatistics.swift in Sources */,
 				F40FAB6323CACCD1005C7565 /* AppDelegate.swift in Sources */,

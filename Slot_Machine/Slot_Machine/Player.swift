@@ -10,6 +10,6 @@ import Foundation
 
 class Player
 {
-    var bank = 5000
-    var bet = 0
+    var bank: Int = 5000
+    var bet: Int = 0
 }

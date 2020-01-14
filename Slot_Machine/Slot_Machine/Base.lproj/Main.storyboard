@@ -51,23 +51,19 @@
                                 <rect key="frame" x="-2" y="31" width="377" height="810"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hd-ZR-WDq">
-                                <rect key="frame" x="10" y="648" width="111" height="54"/>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bja-D1-cjK" customClass="CustomButton" customModule="Slot_Machine" customModuleProvider="target">
+                                <rect key="frame" x="132" y="648" width="111" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="BetOne:forEvent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nv8-WI-3Gf"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bja-D1-cjK">
-                                <rect key="frame" x="132" y="648" width="111" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="BetMax"/>
+                                <state key="disabled" image="Spin"/>
                                 <connections>
                                     <action selector="BetMax:forEvent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RaC-vZ-fOU"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0K2-wZ-WGs">
-                                <rect key="frame" x="254" y="648" width="111" height="56"/>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0K2-wZ-WGs" customClass="CustomButton" customModule="Slot_Machine" customModuleProvider="target">
+                                <rect key="frame" x="254" y="647" width="111" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Spin"/>
                                 <connections>
                                     <action selector="Spin:forEvent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yAT-lf-6hO"/>
                                 </connections>
@@ -93,6 +89,15 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hd-ZR-WDq" customClass="CustomButton" customModule="Slot_Machine" customModuleProvider="target">
+                                <rect key="frame" x="10" y="648" width="111" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="BetOne"/>
+                                <state key="disabled" image="Spin"/>
+                                <connections>
+                                    <action selector="BetOne:forEvent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nv8-WI-3Gf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -116,7 +121,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BetMax" width="344" height="175"/>
+        <image name="BetOne" width="344" height="175"/>
         <image name="Slot-Machine" width="1125" height="2436"/>
+        <image name="Spin" width="344" height="175"/>
         <image name="slot_list_img" width="167" height="1670"/>
     </resources>
 </document>

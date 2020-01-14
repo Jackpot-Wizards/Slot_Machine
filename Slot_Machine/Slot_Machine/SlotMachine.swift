@@ -21,7 +21,6 @@ class SlotMachine
     private var sevens = 0;
     private var blanks = 0;
 
-    private var player: Player!
     private var playerBet = 0
     
     private func ResetRound() -> Void
@@ -49,7 +48,7 @@ class SlotMachine
         return 0
     }
     
-    private func checkJackPot() -> Void {
+    private func checkJackPot(_ player: Player) -> Void {
         /* compare two random values */
         var jackPotTry = (Int)(floor(Double.random(in: 0.0..<1.0) * 51 + 1))
         var jackPotWin = (Int)(floor(Double.random(in: 0.0..<1.0) * 51 + 1))
@@ -58,7 +57,7 @@ class SlotMachine
         }
     }
     
-    private func DetermineWinnings() -> Int
+    private func DetermineWinnings(_ player: Player) -> Int
     {
         var winnings = 0
         if (blanks == 0) {
@@ -115,7 +114,7 @@ class SlotMachine
         return winnings
     }
 
-    public func PlayRound(player: Player) throws -> Int
+    public func PlayRound(_ player: Player) throws -> ([String], Int)
     {
         if (player.bet < 0)
         {
@@ -164,6 +163,6 @@ class SlotMachine
             }
         }
         
-        return DetermineWinnings()
+        return (betLine, DetermineWinnings(player))
     }
 }
