@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3095B4CE23CE6E1600248F4D /* Calculator.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3095B4CD23CE6E1600248F4D /* Calculator.ttf */; };
 		F40FAB6323CACCD1005C7565 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40FAB6223CACCD1005C7565 /* AppDelegate.swift */; };
 		F40FAB6523CACCD1005C7565 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40FAB6423CACCD1005C7565 /* ViewController.swift */; };
 		F40FAB6823CACCD1005C7565 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F40FAB6623CACCD1005C7565 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3095B4CD23CE6E1600248F4D /* Calculator.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Calculator.ttf; path = ../../../../../../../Downloads/Calculator.ttf; sourceTree = "<group>"; };
 		F40FAB5F23CACCD1005C7565 /* Slot_Machine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slot_Machine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F40FAB6223CACCD1005C7565 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F40FAB6423CACCD1005C7565 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				F40FAB7823CAE360005C7565 /* Exception.swift */,
 				F40FAB7A23CAE6E6005C7565 /* PlayerStatistics.swift */,
 				F41049D323CD470C00200A68 /* CustomButton.swift */,
+				3095B4CD23CE6E1600248F4D /* Calculator.ttf */,
 			);
 			path = Slot_Machine;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3095B4CE23CE6E1600248F4D /* Calculator.ttf in Resources */,
 				F40FAB6D23CACCD2005C7565 /* LaunchScreen.storyboard in Resources */,
 				F40FAB6A23CACCD2005C7565 /* Assets.xcassets in Resources */,
 				F40FAB6823CACCD1005C7565 /* Main.storyboard in Resources */,
