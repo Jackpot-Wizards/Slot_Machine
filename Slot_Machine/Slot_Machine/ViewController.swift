@@ -41,12 +41,18 @@ class ViewController: UIViewController {
         if (reelAnimationIsOver == 3)
         {
             reelAnimationIsOver = 0;
-            Bet1.isEnabled = true;
-            BetMax.isEnabled = true;
-            Spin.isEnabled = true;
+            Bank.text = String(player.bank)
             
-            newRoundPlayed = true;
-            betWasPressed = false;
+            // disable all buttons if bank is empty
+            if (player.bank - 1 >= 0)
+            {
+                Bet1.isEnabled = true;
+                BetMax.isEnabled = true;
+                Spin.isEnabled = true;
+                
+                newRoundPlayed = true;
+                betWasPressed = false;
+            }
         }
     }
     
@@ -56,6 +62,12 @@ class ViewController: UIViewController {
         {
             Bank.text = String(Int(Bank.text!)! - Int(Bet.text!)!)
         }
+        
+        Bet1.isEnabled = false;
+        BetMax.isEnabled = false;
+        Spin.isEnabled = false;
+        stopSignal = [false, false, false]
+        slotMachineRun()
     }
     
     @IBAction func BetOne(_ sender: UIButton, forEvent event: UIEvent) {
@@ -92,7 +104,10 @@ class ViewController: UIViewController {
         Spin.isEnabled = false;
         stopSignal = [false, false, false]
         
-        player.bank = Int(Bank.text!)!
+        slotMachineRun()
+    }
+    
+    func slotMachineRun() -> Void {
         player.bet = Int(Bet.text!)!
         
         do {
@@ -107,7 +122,6 @@ class ViewController: UIViewController {
             print("Error!")
         }
     }
-    
     
     @IBOutlet weak var textWithTimer: UILabel!
     
