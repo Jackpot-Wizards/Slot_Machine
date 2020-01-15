@@ -135,16 +135,16 @@ class SlotMachine
             
             switch (outCome[spin]) {
             case CheckRange(outCome[spin], 1, 27):  // 41.5% probability
-                betLine[spin] = "blank";
+                betLine[spin] = "Blank";
                 blanks += 1;
             case CheckRange(outCome[spin], 28, 37): // 15.4% probability
                 betLine[spin] = "Grapes";
                 grapes += 1;
             case CheckRange(outCome[spin], 38, 46): // 13.8% probability
-                betLine[spin] = "Banana";
+                betLine[spin] = "Hart";
                 bananas += 1;
             case CheckRange(outCome[spin], 47, 54): // 12.3% probability
-                betLine[spin] = "Orange";
+                betLine[spin] = "Lemon";
                 oranges += 1;
             case CheckRange(outCome[spin], 55, 59): //  7.7% probability
                 betLine[spin] = "Cherry";
@@ -156,7 +156,7 @@ class SlotMachine
                 betLine[spin] = "Bell";
                 bells += 1;
             case CheckRange(outCome[spin], 65, 65): //  1.5% probability
-                betLine[spin] = "Seven";
+                betLine[spin] = "Diamond";
                 sevens += 1;
             default:
                 print("Value is out of range")
