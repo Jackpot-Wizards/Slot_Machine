@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     var reelAnimationIsOver = 0
     var newRoundPlayed = false
     var betWasPressed = false
+    let maxBet = 3
     
     @IBOutlet weak var Bank: UILabel!
     @IBOutlet weak var Bet: UILabel!
@@ -106,7 +107,15 @@ class ViewController: UIViewController {
         // if no bet buttons were pressed
         if (!betWasPressed)
         {
-            Bank.text = String(Int(Bank.text!)! - Int(Bet.text!)!)
+            if (Int(Bet.text!)! == 0)
+            {
+                Bet.text = String(maxBet)
+                Bank.text = String(Int(Bank.text!)! - maxBet)
+            }
+            else
+            {
+                Bank.text = String(Int(Bank.text!)! - Int(Bet.text!)!)
+            }
         }
         
         Bet1.isEnabled = false;
