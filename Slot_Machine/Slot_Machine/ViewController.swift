@@ -211,10 +211,9 @@ class ViewController: UIViewController {
             }
             else
             {
-                Bank.text = emptyString
                 bet = Int(Bank.text!)!
+                Bank.text = emptyString
             }
-            
         }
         else
         {
@@ -224,8 +223,8 @@ class ViewController: UIViewController {
             }
             else
             {
-                Bank.text = emptyString
                 bet = Int(Bank.text!)! + Int(Bet.text!)!
+                Bank.text = emptyString
             }
         }
         
@@ -241,7 +240,7 @@ class ViewController: UIViewController {
     /// Function is called every round
     func SlotMachineRun() -> Void {
         player.bet = Int(Bet.text!)!
-        player.bank = (Int)(Bank.text!)!
+        player.bank = Bank.text == emptyString ? 0 : (Int)(Bank.text!)!
         
         do {
             let (betLine, winnings, jackpotwon) = try slotMachine.PlayRound(player)
