@@ -111,7 +111,6 @@ class SlotMachine
             PlayerStatistics.RoundsWon += 1
         }
         else {
-            player.bank -= playerBet
             
             PlayerStatistics.MoneyLost += playerBet
             PlayerStatistics.RoundsPlayed += 1
@@ -128,11 +127,6 @@ class SlotMachine
         if (player.bet < 0)
         {
             throw SlotException.exception("Bet cannot be negative")
-        }
-        
-        if (player.bet > player.bank)
-        {
-            throw SlotException.exception("Bet cannot be greate than player's bank")
         }
         
         playerBet = player.bet

@@ -77,6 +77,26 @@ class ViewController: UIViewController {
     }
     
     
+    /// Reset function
+    private func Reset() -> Void
+    {
+        reelAnimationIsOver = 0
+        newRoundPlayed = false
+        betWasPressed = false
+        currentWinnings = 0
+        jackPotWon = false
+        player.bank = 5000
+    }
+    
+    /// Function to clear winnings and jackpot
+    private func ClearWinnings() -> Void
+    {
+        Winnings.text = emptyString
+        currentWinnings = 0
+        Jackpot.text = emptyString
+        jackPotWon = false
+    }
+    
     /// Function to disable buttons
     private func DisableButtons() -> Void
     {
@@ -103,7 +123,6 @@ class ViewController: UIViewController {
             reelAnimationIsOver = 0;
             Bank.text = String(player.bank)
             
-            
             Winnings.text = currentWinnings > 0 ? String(currentWinnings) : emptyString
             Jackpot.text = jackPotWon ? String(SlotMachine.JackPot) : emptyString
             
@@ -111,10 +130,10 @@ class ViewController: UIViewController {
             if (player.bank - SlotMachine.MinBet >= 0)
             {
                 EnableButtons()
-                
-                newRoundPlayed = true
-                betWasPressed = false
             }
+            
+            newRoundPlayed = true
+            betWasPressed = false
         }
     }
     
@@ -125,10 +144,7 @@ class ViewController: UIViewController {
     ///   - sender: <#sender description#>
     ///   - event: <#event description#>
     @IBAction func Spin(_ sender: UIButton, forEvent event: UIEvent) {
-        Winnings.text = emptyString;
-        currentWinnings = 0
-        Jackpot.text = emptyString
-        jackPotWon = false
+        ClearWinnings()
         
         // if no bet buttons were pressed
         if (!betWasPressed)
@@ -156,10 +172,7 @@ class ViewController: UIViewController {
     ///   - sender: <#sender description#>
     ///   - event: <#event description#>
     @IBAction func BetOne(_ sender: UIButton, forEvent event: UIEvent) {
-        Winnings.text = emptyString
-        currentWinnings = 0
-        Jackpot.text = emptyString
-        jackPotWon = false
+        ClearWinnings()
         
         if (newRoundPlayed)
         {
@@ -186,21 +199,37 @@ class ViewController: UIViewController {
     ///   - sender: <#sender description#>
     ///   - event: <#event description#>
     @IBAction func BetMax(_ sender: UIButton, forEvent event: UIEvent) {
-        Winnings.text = emptyString
-        currentWinnings = 0
-        Jackpot.text = emptyString
-        jackPotWon = false
+        ClearWinnings()
+        
+        var bet = SlotMachine.MaxBet
         
         if (!betWasPressed)
         {
-            Bank.text = String(Int(Bank.text!)! - SlotMachine.MaxBet)
+            if Int(Bank.text!)! - SlotMachine.MaxBet >= 0
+            {
+                Bank.text = String(Int(Bank.text!)! - SlotMachine.MaxBet)
+            }
+            else
+            {
+                Bank.text = emptyString
+                bet = Int(Bank.text!)!
+            }
+            
         }
         else
         {
-            Bank.text = String(Int(Bank.text!)! + Int(Bet.text!)! - SlotMachine.MaxBet)
+            if (Int(Bank.text!)! + Int(Bet.text!)! - SlotMachine.MaxBet >= 0)
+            {
+                Bank.text = String(Int(Bank.text!)! + Int(Bet.text!)! - SlotMachine.MaxBet)
+            }
+            else
+            {
+                Bank.text = emptyString
+                bet = Int(Bank.text!)! + Int(Bet.text!)!
+            }
         }
         
-        Bet.text = String(SlotMachine.MaxBet)
+        Bet.text = String(bet)
         
         DisableButtons()
         
@@ -212,6 +241,7 @@ class ViewController: UIViewController {
     /// Function is called every round
     func SlotMachineRun() -> Void {
         player.bet = Int(Bet.text!)!
+        player.bank = (Int)(Bank.text!)!
         
         do {
             let (betLine, winnings, jackpotwon) = try slotMachine.PlayRound(player)
