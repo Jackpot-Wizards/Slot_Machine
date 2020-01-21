@@ -85,7 +85,7 @@ class ViewController: UIViewController {
         betWasPressed = false
         currentWinnings = 0
         jackPotWon = false
-        player.bank = 5000
+        player.bank = 2000
     }
     
     /// Function to clear winnings and jackpot
@@ -174,18 +174,26 @@ class ViewController: UIViewController {
     @IBAction func BetOne(_ sender: UIButton, forEvent event: UIEvent) {
         ClearWinnings()
         
-        if (newRoundPlayed)
+        if Int(Bank.text!)! > 0
         {
-            Bet.text = String(SlotMachine.MinBet)
-            Bank.text = String(Int(Bank.text!)! - SlotMachine.MinBet)
-            
+            if (newRoundPlayed)
+            {
+                Bet.text = String(SlotMachine.MinBet)
+                Bank.text = String(Int(Bank.text!)! - SlotMachine.MinBet)
+                
+            }
+            else  if Bet.text == emptyString || Int(Bet.text!)! < SlotMachine.MaxBet
+            {
+                let currentBet = Bet.text == emptyString ? 0 : Int(Bet.text!)!
+                
+                Bet.text = String(currentBet + SlotMachine.MinBet)
+                Bank.text = String(Int(Bank.text!)! - SlotMachine.MinBet)
+            }
         }
-        else  if Bet.text == emptyString || Int(Bet.text!)! < SlotMachine.MaxBet
+        else
         {
-            let currentBet = Bet.text == emptyString ? 0 : Int(Bet.text!)!
-            
-            Bet.text = String(currentBet + SlotMachine.MinBet)
-            Bank.text = String(Int(Bank.text!)! - SlotMachine.MinBet)
+            Bet1.isEnabled = false
+            BetMax.isEnabled = false
         }
         
         betWasPressed = true;
