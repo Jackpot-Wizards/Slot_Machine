@@ -1,18 +1,11 @@
-//
-//  ViewController.swift
-//  Slot_Machine
-//
-//  Created by Ignat Pechkurenko on 2020-01-11.
-//  Copyright © 2020 Jackpot-Wizards. All rights reserved.
-//
 /*
-File Name: ViewController.swift
-Author's Name: Huen Oh
-StudentID: 301082798
-Date: 2020.01.14
-App description: Slot_Machine
-Version information: 1.0
-*/
+ File Name: ViewController.swift
+ Author's Name: Huen Oh, Ignat Pechkurenko, Blair Desjardins
+ StudentID: 301082798, 301091721, 301086973
+ Date: 2020.01.14
+ App description: Slot_Machine
+ Version information: 1.0
+ */
 
 import UIKit
 
@@ -83,6 +76,26 @@ class ViewController: UIViewController {
         InitSpinAnimation()
     }
     
+    
+    /// Function to disable buttons
+    private func DisableButtons() -> Void
+    {
+        Bet1.isEnabled = false;
+        BetMax.isEnabled = false;
+        Spin.isEnabled = false;
+    }
+    
+    /// Function to enable buttons
+    private func EnableButtons() -> Void
+    {
+        Bet1.isEnabled = true;
+        BetMax.isEnabled = true;
+        Spin.isEnabled = true;
+    }
+    
+    /// This function is called ones a reel animation is over
+    /// and notification is raised
+    /// - Parameter notification: <#notification description#>
     @objc func roundIsOver(_ notification: NSNotification) {
         reelAnimationIsOver += 1
         if (reelAnimationIsOver == 3)
@@ -97,16 +110,20 @@ class ViewController: UIViewController {
             // disable all buttons if bank is empty
             if (player.bank - SlotMachine.MinBet >= 0)
             {
-                Bet1.isEnabled = true;
-                BetMax.isEnabled = true;
-                Spin.isEnabled = true;
+                EnableButtons()
                 
-                newRoundPlayed = true;
-                betWasPressed = false;
+                newRoundPlayed = true
+                betWasPressed = false
             }
         }
     }
     
+    
+    /// Handler of Spin button
+    ///
+    /// - Parameters:
+    ///   - sender: <#sender description#>
+    ///   - event: <#event description#>
     @IBAction func Spin(_ sender: UIButton, forEvent event: UIEvent) {
         Winnings.text = emptyString;
         currentWinnings = 0
@@ -127,13 +144,17 @@ class ViewController: UIViewController {
             }
         }
         
-        Bet1.isEnabled = false;
-        BetMax.isEnabled = false;
-        Spin.isEnabled = false;
+        DisableButtons()
         stopSignal = [false, false, false]  // Initialize stop signals
-        slotMachineRun()
+        SlotMachineRun()
     }
     
+    
+    /// Handler of BetOne button
+    ///
+    /// - Parameters:
+    ///   - sender: <#sender description#>
+    ///   - event: <#event description#>
     @IBAction func BetOne(_ sender: UIButton, forEvent event: UIEvent) {
         Winnings.text = emptyString
         currentWinnings = 0
@@ -158,6 +179,12 @@ class ViewController: UIViewController {
         newRoundPlayed = false;
     }
     
+    
+    /// Handler of BetMax button
+    ///
+    /// - Parameters:
+    ///   - sender: <#sender description#>
+    ///   - event: <#event description#>
     @IBAction func BetMax(_ sender: UIButton, forEvent event: UIEvent) {
         Winnings.text = emptyString
         currentWinnings = 0
@@ -174,16 +201,16 @@ class ViewController: UIViewController {
         }
         
         Bet.text = String(SlotMachine.MaxBet)
-        betWasPressed = true;
-        Bet1.isEnabled = false;
-        BetMax.isEnabled = false;
-        Spin.isEnabled = false;
-        stopSignal = [false, false, false]
         
-        slotMachineRun()
+        DisableButtons()
+        
+        betWasPressed = true;
+        stopSignal = [false, false, false]
+        SlotMachineRun()
     }
     
-    func slotMachineRun() -> Void {
+    /// Function is called every round
+    func SlotMachineRun() -> Void {
         player.bet = Int(Bet.text!)!
         
         do {
@@ -192,12 +219,10 @@ class ViewController: UIViewController {
             currentWinnings = winnings;
             jackPotWon = jackpotwon
             
-            Bet1.isEnabled = false;
-            BetMax.isEnabled = false;
-            Spin.isEnabled = false;
+            DisableButtons()
+            
             stopSignal = [false, false, false]
             RunSpinAnimation(betLine);
-            
         } catch {
             print("Error!")
         }
