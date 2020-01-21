@@ -90,6 +90,13 @@
                                     <action selector="BetOne:forEvent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nv8-WI-3Gf"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyP-k0-AOr">
+                                <rect key="frame" x="188" y="243" width="107" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Calculator" family="Calculator" pointSize="38"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -99,6 +106,7 @@
                         <outlet property="Bet" destination="aY6-aX-pnt" id="Yle-X1-2x9"/>
                         <outlet property="Bet1" destination="8hd-ZR-WDq" id="SMG-1I-vY0"/>
                         <outlet property="BetMax" destination="bja-D1-cjK" id="Isc-mU-JHC"/>
+                        <outlet property="Jackpot" destination="qyP-k0-AOr" id="NRb-Ft-myq"/>
                         <outlet property="Spin" destination="0K2-wZ-WGs" id="8zY-Zs-UKD"/>
                         <outlet property="Winnings" destination="KBC-Us-ZLk" id="yc7-F9-6ik"/>
                         <outlet property="imgViewSlotItem1" destination="wYs-3c-AbK" id="Fxs-RQ-vhX"/>

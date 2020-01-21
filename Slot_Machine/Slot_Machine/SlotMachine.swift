@@ -10,7 +10,9 @@ import Foundation
 
 class SlotMachine
 {
-    private var betLine = [" ", " ", " "]
+    public static var JackPot = 1000
+    public static var MinBet = 1
+    public static var MaxBet =  3
 
     private var grapes = 0;
     private var bananas = 0;
@@ -34,7 +36,6 @@ class SlotMachine
         sevens = 0
         blanks = 0
         
-        betLine = [" ", " ", " "]
         playerBet = 0
     }
     
@@ -48,18 +49,24 @@ class SlotMachine
         return 0
     }
     
-    private func checkJackPot(_ player: Player) -> Void {
+    private func CheckJackPot(_ player: Player) -> Bool {
         /* compare two random values */
         var jackPotTry = (Int)(floor(Double.random(in: 0.0..<1.0) * 51 + 1))
         var jackPotWin = (Int)(floor(Double.random(in: 0.0..<1.0) * 51 + 1))
+        
         if (jackPotTry == jackPotWin) {
             player.bank += 1000
+            return true
         }
+        
+        return false
     }
     
-    private func DetermineWinnings(_ player: Player) -> Int
+    private func DetermineWinnings(_ player: Player) -> (Int, Bool)
     {
         var winnings = 0
+        var jackpotWon = false
+        
         if (blanks == 0) {
             if (grapes == 3) {
                 winnings = playerBet * 10
@@ -96,6 +103,7 @@ class SlotMachine
             }
 
             player.bank += winnings
+            jackpotWon = CheckJackPot(player)
             
             PlayerStatistics.MoneyWon += winnings
             PlayerStatistics.RoundsPlayed += 1
@@ -111,10 +119,10 @@ class SlotMachine
         
         ResetRound()
         
-        return winnings
+        return (winnings, jackpotWon)
     }
 
-    public func PlayRound(_ player: Player) throws -> ([String], Int)
+    public func PlayRound(_ player: Player) throws -> ([String], Int, Bool)
     {
         if (player.bet < 0)
         {
@@ -127,6 +135,7 @@ class SlotMachine
         }
         
         playerBet = player.bet
+        var betLine = [" ", " ", " "]
         var outCome = [0, 0, 0];
         
         for spin in 0...2
@@ -163,6 +172,8 @@ class SlotMachine
             }
         }
         
-        return (betLine, DetermineWinnings(player))
+        let (winnings, jackpotwon) = DetermineWinnings(player)
+        
+        return (betLine, winnings, jackpotwon)
     }
 }
