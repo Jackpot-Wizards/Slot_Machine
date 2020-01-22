@@ -122,7 +122,15 @@ class ViewController: UIViewController {
         if (reelAnimationIsOver == 3)
         {
             reelAnimationIsOver = 0;
-            Bank.text = String(player.bank)
+            
+            Bank.text = player.bank == 0 ? emptyString : String(player.bank)
+            
+            if (player.bank == 0)
+            {
+                Bet.text = emptyString
+                DisableButtons()
+                return
+            }
             
             Winnings.text = currentWinnings > 0 ? String(currentWinnings) : emptyString
             Jackpot.text = jackPotWon ? String(SlotMachine.JackPot) : emptyString
@@ -152,12 +160,28 @@ class ViewController: UIViewController {
         {
             if (Bet.text!.isEmpty)
             {
-                Bet.text = String(SlotMachine.MaxBet)
-                Bank.text = String(Int(Bank.text!)! - SlotMachine.MaxBet)
+                if (Int(Bank.text!)! - SlotMachine.MaxBet >= 0)
+                {
+                    Bet.text = String(SlotMachine.MaxBet)
+                    Bank.text = String(Int(Bank.text!)! - SlotMachine.MaxBet)
+                }
+                else
+                {
+                    // cannot play with be greater than bank
+                    return
+                }
             }
             else
             {
-                Bank.text = String(Int(Bank.text!)! - Int(Bet.text!)!)
+                if (Int(Bank.text!)! - Int(Bet.text!)! >= 0)
+                {
+                    Bank.text = String(Int(Bank.text!)! - Int(Bet.text!)!)
+                }
+                else
+                {
+                    // cannot play with be greater than bank
+                    return
+                }
             }
         }
         
@@ -175,13 +199,12 @@ class ViewController: UIViewController {
     @IBAction func BetOne(_ sender: UIButton, forEvent event: UIEvent) {
         ClearWinnings()
         
-        if Int(Bank.text!)! > 0
+        if Int(Bank.text!)! > 0 && Int(Bank.text!)! - SlotMachine.MinBet >= 0
         {
             if (newRoundPlayed)
             {
                 Bet.text = String(SlotMachine.MinBet)
                 Bank.text = String(Int(Bank.text!)! - SlotMachine.MinBet)
-                
             }
             else  if Bet.text == emptyString || Int(Bet.text!)! < SlotMachine.MaxBet
             {
@@ -189,6 +212,11 @@ class ViewController: UIViewController {
                 
                 Bet.text = String(currentBet + SlotMachine.MinBet)
                 Bank.text = String(Int(Bank.text!)! - SlotMachine.MinBet)
+            }
+            
+            if (Int(Bank.text!)! == 0)
+            {
+                Bank.text = emptyString
             }
         }
         else
@@ -217,6 +245,11 @@ class ViewController: UIViewController {
             if Int(Bank.text!)! - SlotMachine.MaxBet >= 0
             {
                 Bank.text = String(Int(Bank.text!)! - SlotMachine.MaxBet)
+                
+                if (Int(Bank.text!)! == 0)
+                {
+                    Bank.text = emptyString
+                }
             }
             else
             {
@@ -229,6 +262,11 @@ class ViewController: UIViewController {
             if (Int(Bank.text!)! + Int(Bet.text!)! - SlotMachine.MaxBet >= 0)
             {
                 Bank.text = String(Int(Bank.text!)! + Int(Bet.text!)! - SlotMachine.MaxBet)
+                
+                if (Int(Bank.text!)! == 0)
+                {
+                    Bank.text = emptyString
+                }
             }
             else
             {
