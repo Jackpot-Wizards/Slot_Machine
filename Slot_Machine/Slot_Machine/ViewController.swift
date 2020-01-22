@@ -77,6 +77,17 @@ class ViewController: UIViewController {
         InitSpinAnimation()
     }
     
+    /// Exit button function
+    @IBAction func ExitButton(_ sender: Any) {
+        exit(0)
+    }
+    
+    
+    /// Reset button function
+    @IBAction func ResetButton(_ sender: Any) {
+        Reset()
+    }
+    
     
     /// Reset function
     private func Reset() -> Void
@@ -87,6 +98,12 @@ class ViewController: UIViewController {
         currentWinnings = 0
         jackPotWon = false
         player.bank = 2000
+        Bank.text = String(player.bank)
+        Bet.text = ""
+        
+        arrSlotImgView = [imgViewSlotItem1, imgViewSlotItem2, imgViewSlotItem3]
+        
+        InitSpinAnimation()
     }
     
     /// Function to clear winnings and jackpot
