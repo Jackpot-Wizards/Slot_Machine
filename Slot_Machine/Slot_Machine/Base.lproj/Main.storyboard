@@ -122,6 +122,7 @@
                         <outlet property="Bet1" destination="8hd-ZR-WDq" id="SMG-1I-vY0"/>
                         <outlet property="BetMax" destination="bja-D1-cjK" id="Isc-mU-JHC"/>
                         <outlet property="Jackpot" destination="qyP-k0-AOr" id="NRb-Ft-myq"/>
+                        <outlet property="ResetButton" destination="EUu-kI-rwq" id="YLg-Sj-5rF"/>
                         <outlet property="Spin" destination="0K2-wZ-WGs" id="8zY-Zs-UKD"/>
                         <outlet property="Winnings" destination="KBC-Us-ZLk" id="yc7-F9-6ik"/>
                         <outlet property="imgViewSlotItem1" destination="wYs-3c-AbK" id="Fxs-RQ-vhX"/>

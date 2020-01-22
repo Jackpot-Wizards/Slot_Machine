@@ -30,6 +30,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var Spin: UIButton!
     @IBOutlet weak var Winnings: UILabel!
     @IBOutlet weak var Jackpot: UILabel!
+    @IBOutlet weak var ResetButton: UIButton!
     
     
     
@@ -118,17 +119,19 @@ class ViewController: UIViewController {
     /// Function to disable buttons
     private func DisableButtons() -> Void
     {
-        Bet1.isEnabled = false;
-        BetMax.isEnabled = false;
-        Spin.isEnabled = false;
+        Bet1.isEnabled = false
+        BetMax.isEnabled = false
+        Spin.isEnabled = false
+        ResetButton.isEnabled = false
     }
     
     /// Function to enable buttons
     private func EnableButtons() -> Void
     {
-        Bet1.isEnabled = true;
-        BetMax.isEnabled = true;
-        Spin.isEnabled = true;
+        Bet1.isEnabled = true
+        BetMax.isEnabled = true
+        Spin.isEnabled = true
+        ResetButton.isEnabled = true
     }
     
     /// This function is called ones a reel animation is over
