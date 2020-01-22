@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		30792A0623CE899700843B42 /* Calculator.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30792A0523CE899700843B42 /* Calculator.ttf */; };
+		3F2B898023D7C5A9001F81C1 /* sound_slot_spin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3F2B897E23D7C5A9001F81C1 /* sound_slot_spin.mp3 */; };
+		3F2B898123D7C5A9001F81C1 /* sound_slot_stop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3F2B897F23D7C5A9001F81C1 /* sound_slot_stop.mp3 */; };
 		F40FAB6323CACCD1005C7565 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40FAB6223CACCD1005C7565 /* AppDelegate.swift */; };
 		F40FAB6523CACCD1005C7565 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40FAB6423CACCD1005C7565 /* ViewController.swift */; };
 		F40FAB6823CACCD1005C7565 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F40FAB6623CACCD1005C7565 /* Main.storyboard */; };
@@ -22,6 +24,8 @@
 
 /* Begin PBXFileReference section */
 		30792A0523CE899700843B42 /* Calculator.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Calculator.ttf; sourceTree = "<group>"; };
+		3F2B897E23D7C5A9001F81C1 /* sound_slot_spin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_slot_spin.mp3; sourceTree = "<group>"; };
+		3F2B897F23D7C5A9001F81C1 /* sound_slot_stop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_slot_stop.mp3; sourceTree = "<group>"; };
 		F40FAB5F23CACCD1005C7565 /* Slot_Machine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slot_Machine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F40FAB6223CACCD1005C7565 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F40FAB6423CACCD1005C7565 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +82,8 @@
 				F40FAB7A23CAE6E6005C7565 /* PlayerStatistics.swift */,
 				30792A0523CE899700843B42 /* Calculator.ttf */,
 				F41049D323CD470C00200A68 /* CustomButton.swift */,
+				3F2B897E23D7C5A9001F81C1 /* sound_slot_spin.mp3 */,
+				3F2B897F23D7C5A9001F81C1 /* sound_slot_stop.mp3 */,
 			);
 			path = Slot_Machine;
 			sourceTree = "<group>";
@@ -140,8 +146,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F2B898123D7C5A9001F81C1 /* sound_slot_stop.mp3 in Resources */,
 				30792A0623CE899700843B42 /* Calculator.ttf in Resources */,
 				F40FAB6D23CACCD2005C7565 /* LaunchScreen.storyboard in Resources */,
+				3F2B898023D7C5A9001F81C1 /* sound_slot_spin.mp3 in Resources */,
 				F40FAB6A23CACCD2005C7565 /* Assets.xcassets in Resources */,
 				F40FAB6823CACCD1005C7565 /* Main.storyboard in Resources */,
 			);

@@ -8,6 +8,7 @@
  */
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
     
@@ -259,7 +260,8 @@ class ViewController: UIViewController {
             DisableButtons()
             
             stopSignal = [false, false, false]
-            RunSpinAnimation(betLine);
+            self.soundPlayerSpin = playSound("sound_slot_spin") //sound
+            RunSpinAnimation(betLine)
         } catch {
             print("Error!")
         }
@@ -395,6 +397,13 @@ class ViewController: UIViewController {
                 
                 // Stop condition2 - stop signal
                 if ((true == self.stopSignal[idxReel])) {
+                    
+                    //sound
+                    self.soundPlayerStop = self.playSound("sound_slot_stop")
+                    if(2 == idxReel) {
+                        self.soundPlayerSpin!.stop()
+                    }
+                    
                     // Stop
                     imageView.layer.removeAllAnimations()
                     
@@ -429,6 +438,45 @@ class ViewController: UIViewController {
             }
         })
     }
+    
+    
+    // Audio Player
+    var soundPlayerStop: AVAudioPlayer? // Stop sound of the each spin
+    var soundPlayerSpin: AVAudioPlayer? // Spin sound as background
+    
+    /**
+     Playsound with audio plyer
+     - Parameters:
+      - fileName: File name of the sound
+     - Returns: AVAudioPlayer
+     */
+    func playSound(_ fileName:String) -> AVAudioPlayer? {
+        guard let url = Bundle.main.url(forResource: fileName, withExtension: "mp3") else { return nil}
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+            var soundPlayer: AVAudioPlayer?
+            
+            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+            soundPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+            /* iOS 10 and earlier require the following line:
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+
+            guard let soundPlayerStop = soundPlayer else { return nil}
+
+            soundPlayerStop.play()
+            
+            return soundPlayer
+
+        } catch let error {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+    
     
 }
 
