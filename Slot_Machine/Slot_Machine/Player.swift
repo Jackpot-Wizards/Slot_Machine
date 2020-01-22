@@ -11,6 +11,6 @@ import Foundation
 
 class Player
 {
-    var bank: Int = 4
+    var bank: Int = 2000
     var bet: Int = 0
 }
